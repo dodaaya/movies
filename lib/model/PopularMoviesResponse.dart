@@ -27,7 +27,6 @@ class PopularMoviesResponse {
     totalPages = json['total_pages'];
     totalResults = json['total_results'];
   }
-
   int? page;
   List<Results>? results;
   int? totalPages;
@@ -78,8 +77,7 @@ class Results {
     this.title,
     this.video,
     this.voteAverage,
-    this.voteCount,
-  });
+    this.voteCount,});
 
   Results.fromJson(dynamic json) {
     adult = json['adult'];
@@ -97,7 +95,6 @@ class Results {
     voteAverage = json['vote_average'];
     voteCount = json['vote_count'];
   }
-
   bool? adult;
   String? backdropPath;
   List<int>? genreIds;
@@ -110,7 +107,7 @@ class Results {
   String? releaseDate;
   String? title;
   bool? video;
-  double? voteAverage;
+  num? voteAverage;
   int? voteCount;
 
   Map<String, dynamic> toJson() {
@@ -131,4 +128,5 @@ class Results {
     map['vote_count'] = voteCount;
     return map;
   }
+
 }

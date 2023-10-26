@@ -4,7 +4,7 @@ import 'package:movies/model/PopularMoviesResponse.dart';
 import '../myTheme.dart';
 
 class MovieCont extends StatelessWidget {
-  List<Results> results;
+List<Results> results;
 
   MovieCont({required this.results});
 
