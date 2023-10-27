@@ -21,14 +21,15 @@ class PopularMoviesResponse {
     if (json['results'] != null) {
       results = [];
       json['results'].forEach((v) {
-        results?.add(Results.fromJson(v));
+        results?.add(Result.fromJson(v));
       });
     }
     totalPages = json['total_pages'];
     totalResults = json['total_results'];
   }
+
   int? page;
-  List<Results>? results;
+  List<Result>? results;
   int? totalPages;
   int? totalResults;
   String? status_message;
@@ -62,8 +63,8 @@ class PopularMoviesResponse {
 /// vote_average : 7.3
 /// vote_count : 348
 
-class Results {
-  Results({
+class Result {
+  Result({
     this.adult,
     this.backdropPath,
     this.genreIds,
@@ -79,7 +80,7 @@ class Results {
     this.voteAverage,
     this.voteCount,});
 
-  Results.fromJson(dynamic json) {
+  Result.fromJson(dynamic json) {
     adult = json['adult'];
     backdropPath = json['backdrop_path'];
     genreIds = json['genre_ids'] != null ? json['genre_ids'].cast<int>() : [];
