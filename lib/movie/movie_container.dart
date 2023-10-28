@@ -1,12 +1,15 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:movies/Data%20classes/movie.dart';
 import 'package:movies/model/PopularMoviesResponse.dart';
-import 'package:movies/tabs/watchlist_tab.dart';
 
+import '../Firebase/firebase_utils.dart';
 import '../myTheme.dart';
 
 class MovieCont extends StatelessWidget {
   List<Result> resultsList;
+  String title = ' ';
+  String description = ' ';
 
   MovieCont({required this.resultsList});
 
@@ -30,38 +33,38 @@ class MovieCont extends StatelessWidget {
                       color: MyTheme.white,
                       size: 80,
                     )),
-                InkWell(
-                  onTap: () {
-                    print('hello');
-                  },
-                  child: Container(
-                      height: MediaQuery.of(context).size.height * 0.42,
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 60),
-                        child: Stack(
-                          children: [
-                            Image.network(
-                              'https://image.tmdb.org/t/p/w500' +
-                                  resultsList[itemIndex].posterPath!,
-                            ),
-                            Icon(
+                Container(
+                    height: MediaQuery.of(context).size.height * 0.42,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 60),
+                      child: Stack(
+                        children: [
+                          Image.network(
+                            'https://image.tmdb.org/t/p/w500' +
+                                resultsList[itemIndex].posterPath!,
+                          ),
+                          InkWell(
+                            onTap: () {
+                              addTask();
+                            },
+                            child: Icon(
                               Icons.bookmark,
                               color: MyTheme.transparentColor,
                               size: 39,
                             ),
-                            Container(
-                              width: 39,
-                              height: 35,
-                              child: Icon(
-                                Icons.add,
-                                color: MyTheme.white,
-                                size: 20,
-                              ),
+                          ),
+                          Container(
+                            width: 39,
+                            height: 35,
+                            child: Icon(
+                              Icons.add,
+                              color: MyTheme.white,
+                              size: 20,
                             ),
-                          ],
-                        ),
-                      )),
-                ),
+                          ),
+                        ],
+                      ),
+                    )),
                 Container(
                   width: MediaQuery.of(context).size.width * 0.8,
                   height: MediaQuery.of(context).size.height * 0.33,
@@ -94,5 +97,13 @@ class MovieCont extends StatelessWidget {
                 )
               ],
             ));
+  }
+
+  void addTask() {
+    Movie movie = Movie(title: title);
+    FirebaseUtils.addTaskToFireStore(movie).timeout(Duration(milliseconds: 500),
+        onTimeout: () {
+      print('movie added to watchlist');
+    });
   }
 }
