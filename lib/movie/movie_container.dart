@@ -1,11 +1,15 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:movies/Data%20classes/movie.dart';
 import 'package:movies/model/PopularMoviesResponse.dart';
 
+import '../Firebase/firebase_utils.dart';
 import '../myTheme.dart';
 
 class MovieCont extends StatelessWidget {
   List<Result> resultsList;
+  String title = ' ';
+  String description = ' ';
 
   MovieCont({required this.resultsList});
 
@@ -39,6 +43,15 @@ class MovieCont extends StatelessWidget {
                             'https://image.tmdb.org/t/p/w500' +
                                 resultsList[itemIndex].posterPath!,
                           ),
+                          InkWell(
+                            onTap: () {
+                              addTask();
+                            },
+                            child: Icon(
+                              Icons.bookmark,
+                              color: MyTheme.transparentColor,
+                              size: 39,
+                            ),
                           Icon(
                             Icons.bookmark,
                             color: MyTheme.transparentColor,
@@ -88,5 +101,13 @@ class MovieCont extends StatelessWidget {
                 )
               ],
             ));
+  }
+
+  void addTask() {
+    Movie movie = Movie(title: title);
+    FirebaseUtils.addTaskToFireStore(movie).timeout(Duration(milliseconds: 500),
+        onTimeout: () {
+      print('movie added to watchlist');
+    });
   }
 }
