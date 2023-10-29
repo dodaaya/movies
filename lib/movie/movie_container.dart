@@ -52,6 +52,10 @@ class MovieCont extends StatelessWidget {
                               color: MyTheme.transparentColor,
                               size: 39,
                             ),
+                          Icon(
+                            Icons.bookmark,
+                            color: MyTheme.transparentColor,
+                            size: 39,
                           ),
                           Container(
                             width: 39,
