@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:movies/CustomItems/MovieItem.dart';
 import 'package:movies/Models/GenreResponse.dart';
-import 'package:movies/Models/MoviesResponse.dart';
 import 'package:movies/api/api_manager.dart';
+import 'package:movies/model/MoviesResponse.dart';
+
+import '../model/PopularMoviesResponse.dart';
 
 class MoviesTap extends StatelessWidget {
   static const String routeName = "movies";

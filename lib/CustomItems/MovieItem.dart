@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:movies/Models/MoviesResponse.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+
+import '../model/PopularMoviesResponse.dart';
 
 class MovieItem extends StatelessWidget {
   Result movie;
+
   MovieItem({required this.movie});
 
   @override
