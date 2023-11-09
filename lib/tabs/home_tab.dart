@@ -7,14 +7,16 @@ class HomeTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        PopularMovie(),
-        SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-        NewRelease(),
-        SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-        RecommendedMovie()
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          PopularMovie(),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+          NewRelease(),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+          RecommendedMovie()
+        ],
+      ),
     );
   }
 }

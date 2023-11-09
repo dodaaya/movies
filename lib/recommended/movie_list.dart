@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:movies/model/PopularMoviesResponse.dart';
 import 'package:movies/recommended/movie_itemito.dart';
 
-import '../model/TopRatedResponse.dart';
 import '../myTheme.dart';
 
 class MovieList extends StatelessWidget {
-  List<Result3> results;
+  List<Result> results;
 
   MovieList({required this.results});
 

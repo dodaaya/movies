@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:movies/Firebase/firebase_utils.dart';
 import 'package:movies/model/NewReleaseResponse.dart';
+import 'package:movies/model/PopularMoviesResponse.dart';
 
 import '../myTheme.dart';
 
 class MovItem extends StatelessWidget {
-  Result2 results;
+  Result results;
 
   MovItem({required this.results});
 
@@ -19,14 +21,21 @@ class MovItem extends StatelessWidget {
         Icons.bookmark,
         color: MyTheme.transparentColor,
         size: 39,
+
+        //icon: Icon(Icons.bookmark,size: 30,),
       ),
-      Container(
-        width: 39,
-        height: 35,
-        child: Icon(
-          Icons.add,
-          color: MyTheme.white,
-          size: 20,
+      InkWell(
+        onTap: (){
+          FireBaseUtils.addMovie(results);
+        },
+        child: Container(
+          width: 39,
+          height: 35,
+          child: Icon(
+            Icons.add,
+            color: MyTheme.white,
+            size: 20,
+          ),
         ),
       ),
     ]);
