@@ -4,6 +4,7 @@ import 'package:movies/new_release/new_release_movie.dart';
 import 'package:movies/recommended/recommended_movie.dart';
 
 class HomeTab extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Column(
