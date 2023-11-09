@@ -14,7 +14,8 @@ class MovieCont extends StatelessWidget {
       options: CarouselOptions(height: 238.0),
       itemCount: resultsList.length,
       itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) =>
-          MovieItem(results: resultsList[itemIndex]),
+          InkWell(
+              onTap: () {}, child: MovieItem(results: resultsList[itemIndex])),
     );
   }
 }
