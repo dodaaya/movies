@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:movies/model/PopularMoviesResponse.dart';
 import 'package:movies/new_release/mov_item.dart';
 
 import '../model/NewReleaseResponse.dart';
 import '../myTheme.dart';
 
 class MovieRow extends StatelessWidget {
-  List<Result2> results2;
+  List<Result> results2;
 
   MovieRow({required this.results2});
 

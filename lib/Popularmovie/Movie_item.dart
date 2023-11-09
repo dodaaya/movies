@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies/Firebase/firebase_utils.dart';
 import 'package:movies/model/PopularMoviesResponse.dart';
 
 import '../myTheme.dart';
@@ -38,13 +39,18 @@ class MovieItem extends StatelessWidget {
                     color: MyTheme.transparentColor,
                     size: 39,
                   ),
-                  Container(
-                    width: 39,
-                    height: 35,
-                    child: Icon(
-                      Icons.add,
-                      color: MyTheme.white,
-                      size: 20,
+                  InkWell(
+                    onTap: (){
+                      FireBaseUtils.addMovie(results);
+                    },
+                    child: Container(
+                      width: 39,
+                      height: 35,
+                      child: Icon(
+                        Icons.add,
+                        color: MyTheme.white,
+                        size: 20,
+                      ),
                     ),
                   ),
                 ],

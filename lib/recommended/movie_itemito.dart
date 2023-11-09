@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:movies/Firebase/firebase_utils.dart';
+import 'package:movies/model/PopularMoviesResponse.dart';
 import 'package:movies/model/TopRatedResponse.dart';
 
 import '../myTheme.dart';
 
 class MovieItemito extends StatelessWidget {
-  Result3 results;
+  Result results;
 
   MovieItemito({required this.results});
 
@@ -29,13 +31,18 @@ class MovieItemito extends StatelessWidget {
               color: MyTheme.transparentColor,
               size: 39,
             ),
-            Container(
-              width: 39,
-              height: 35,
-              child: Icon(
-                Icons.add,
-                color: MyTheme.white,
-                size: 20,
+            InkWell(
+              onTap: (){
+                FireBaseUtils.addMovie(results);
+              },
+              child: Container(
+                width: 39,
+                height: 35,
+                child: Icon(
+                  Icons.add,
+                  color: MyTheme.white,
+                  size: 20,
+                ),
               ),
             ),
           ]),

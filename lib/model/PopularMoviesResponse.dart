@@ -78,7 +78,7 @@ class Result {
     this.title,
     this.video,
     this.voteAverage,
-    this.voteCount,});
+    this.voteCount,this.fbId=""});
 
   Result.fromJson(dynamic json) {
     adult = json['adult'];
@@ -95,6 +95,7 @@ class Result {
     video = json['video'];
     voteAverage = json['vote_average'];
     voteCount = json['vote_count'];
+    fbId=json['fbId'];
   }
   bool? adult;
   String? backdropPath;
@@ -110,6 +111,7 @@ class Result {
   bool? video;
   num? voteAverage;
   int? voteCount;
+  String? fbId;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -127,6 +129,7 @@ class Result {
     map['video'] = video;
     map['vote_average'] = voteAverage;
     map['vote_count'] = voteCount;
+    map["fbId"]=fbId;
     return map;
   }
 

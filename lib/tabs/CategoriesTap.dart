@@ -35,8 +35,9 @@ class CategoriesTap extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.only(
             left: 10.0,
-            top: MediaQuery.sizeOf(context).height * 0.1,
-            right: 10),
+            top: MediaQuery.sizeOf(context).height * 0.02,
+            right: 10,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -131,26 +132,29 @@ class CategoriesTap extends StatelessWidget {
 
                   List<Genres>? categories = snapchot.data?.genres;
                   return Expanded(
-                    child: GridView.builder(
-                      gridDelegate:
-                      SliverGridDelegateWithFixedCrossAxisCount(
-                          mainAxisSpacing:
-                          MediaQuery.sizeOf(context).height * 0.05,
-                          crossAxisCount: 2,
-                          crossAxisSpacing:
-                          MediaQuery.sizeOf(context).width * 0.1),
-                      itemBuilder: (context, index) {
-                        return InkWell(
-                          onTap:(){
-                            Navigator.pushNamed(context, MoviesTap.routeName, arguments:categories?[index]);
-                          } ,
-                          child: CategoryItem(
-                            name: categories?[index]?.name ?? "",
-                            imagePath: imagePath[index],
-                          ),
-                        );
-                      },
-                      itemCount: categories?.length ?? 0,
+                    child: Padding(
+                      padding:  EdgeInsets.only(top: MediaQuery.sizeOf(context).height * 0.02),
+                      child: GridView.builder(
+                        gridDelegate:
+                        SliverGridDelegateWithFixedCrossAxisCount(
+                            mainAxisSpacing:
+                            MediaQuery.sizeOf(context).height * 0.05,
+                            crossAxisCount: 2,
+                            crossAxisSpacing:
+                            MediaQuery.sizeOf(context).width * 0.1),
+                        itemBuilder: (context, index) {
+                          return InkWell(
+                            onTap:(){
+                              Navigator.pushNamed(context, MoviesTap.routeName, arguments:categories?[index]);
+                            } ,
+                            child: CategoryItem(
+                              name: categories?[index]?.name ?? "",
+                              imagePath: imagePath[index],
+                            ),
+                          );
+                        },
+                        itemCount: categories?.length ?? 0,
+                      ),
                     ),
                   );
                 }),
