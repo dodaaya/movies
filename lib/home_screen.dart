@@ -21,25 +21,30 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: MyTheme.black,
-        bottomNavigationBar: BottomNavigationBar(
+        bottomNavigationBar: Theme(
+          data: MyTheme.lightTheme.copyWith(
+            canvasColor: MyTheme.bottomBarColor
+          ),
+          child: BottomNavigationBar(
 
-        unselectedItemColor: MyTheme.lighterGreyColor,
-          fixedColor: MyTheme.selectedYellowColor,
-          backgroundColor: MyTheme.greyColor,
-          showUnselectedLabels: true,
-          currentIndex: selectedIndex,
-          onTap: (index) {
-            selectedIndex = index;
-            setState(() {});
-          },
-          items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'HOME'),
-            BottomNavigationBarItem(icon: Icon(Icons.search), label: 'SEARCH'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.movie_creation), label: 'BROWSE'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.collections_bookmark_sharp), label: 'WATCHLIST')
-          ],
+          unselectedItemColor: MyTheme.lighterGreyColor,
+            fixedColor: MyTheme.selectedYellowColor,
+            backgroundColor: MyTheme.greyColor,
+            showUnselectedLabels: true,
+            currentIndex: selectedIndex,
+            onTap: (index) {
+              selectedIndex = index;
+              setState(() {});
+            },
+            items: [
+              BottomNavigationBarItem(icon: Icon(Icons.home), label: 'HOME'),
+              BottomNavigationBarItem(icon: Icon(Icons.search), label: 'SEARCH'),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.movie_creation), label: 'BROWSE'),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.collections_bookmark_sharp), label: 'WATCHLIST')
+            ],
+          ),
         ),
         body: tabs[selectedIndex],
       ),
