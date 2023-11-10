@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:movies/Models/GenreResponse.dart';
 import 'package:movies/Models/MoviesResponse.dart';
+import 'package:movies/Models/SimillarResponse.dart';
 import 'package:movies/api/api_consts.dart';
 import 'package:movies/model/NewReleaseResponse.dart';
 
@@ -120,12 +121,33 @@ class ApiManager {
       var response = await http.get(url, headers: {
         'Authorization':
             'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NWRlNDBmMDE1MjMwMzQzMWE4NzJkZjc2MjExOTk2NyIsInN1YiI6IjY1NDAxOTE5NTA3MzNjMDBjNTM2NGU0YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.63VZ2aTvKv2v185XtKAuYhrvGCWx-OQAErv07EL_Dc0',
-        'movId': '$movieId'
+
       });
       var bodyString = response.body;
       var json = jsonDecode(bodyString);
       print('jsonconverted');
       return Movies.fromJson(json);
+    } catch (e) {
+      print(e.toString());
+      throw e;
+    }
+  }
+  static Future<SimillarResponse?> getSimillar(String movieId) async {
+    //https://api.themoviedb.org/3/movie/{movie_id}/similar
+    Uri url = Uri.https(
+      ApiCostants.BaseUrl,
+     "/3/movie/$movieId/similar",
+    );
+    try {
+      var response = await http.get(url, headers: {
+        'Authorization':
+        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NWRlNDBmMDE1MjMwMzQzMWE4NzJkZjc2MjExOTk2NyIsInN1YiI6IjY1NDAxOTE5NTA3MzNjMDBjNTM2NGU0YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.63VZ2aTvKv2v185XtKAuYhrvGCWx-OQAErv07EL_Dc0',
+
+      });
+      var bodyString = response.body;
+      var json = jsonDecode(bodyString);
+      print('jsonconverted');
+      return SimillarResponse.fromJson(json);
     } catch (e) {
       print(e.toString());
       throw e;
