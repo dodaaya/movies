@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:movies/Popularmovie/Movie_item.dart';
 import 'package:movies/model/PopularMoviesResponse.dart';
 
+import '../tabs/secondScreen.dart';
+
 class MovieCont extends StatelessWidget {
   List<Result> resultsList;
 
@@ -14,7 +16,12 @@ class MovieCont extends StatelessWidget {
       options: CarouselOptions(height: 238.0),
       itemCount: resultsList.length,
       itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) =>
-          MovieItem(results: resultsList[itemIndex]),
+          InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, SecondScreen.routeName,
+                    arguments: resultsList?[itemIndex].id);
+              },
+              child: MovieItem(results: resultsList[itemIndex])),
     );
   }
 }

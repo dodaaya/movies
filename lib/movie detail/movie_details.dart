@@ -1,36 +1,35 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:movies/CustomItems/ui.dart';
 import 'package:movies/api/api_manager.dart';
+import 'package:movies/movie%20detail/ui.dart';
 
-
-import '../model/Movies.dart';
+import '../model/MoviesDetails.dart';
 
 class MovieDetails extends StatelessWidget {
-Movies movies;
-MovieDetails({required this.movies});
   @override
   Widget build(BuildContext context) {
+    var resultsList = ModalRoute.of(context)?.settings.arguments as int?;
     return FutureBuilder<Movies?>(
-        future: ApiManager.getsources(movies.id.toString()),
-        builder: (_,snapshot){
+        future: ApiManager.getDetails(resultsList.toString()),
+        builder: (_, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
               child: CircularProgressIndicator(
-                color: Theme
-                    .of(context)
-                    .primaryColor,
+                color: Theme.of(context).primaryColor,
               ),
             );
           } else if (snapshot.hasError) {
             return Column(
               children: [
                 Text(" something went wrong"),
-                ElevatedButton(onPressed: () {}, child: Text("Try Again"))
+                ElevatedButton(
+                    onPressed: () {
+                      ApiManager.getDetails(resultsList.toString());
+                    },
+                    child: Text("Try Again"))
               ],
             );
           }
-          if (snapshot.data?.status != 'ok') {
+          if (snapshot.data?.success == false) {
             return Column(
               children: [
                 Text(snapshot.data?.status_message ?? ''),
@@ -38,7 +37,8 @@ MovieDetails({required this.movies});
               ],
             );
           }
-          return MovieItem(movies: movies);
+          var movies = snapshot.data!;
+          return Ui(result: movies);
         });
   }
 }

@@ -6,7 +6,7 @@ import 'package:movies/Models/MoviesResponse.dart';
 import 'package:movies/api/api_consts.dart';
 import 'package:movies/model/NewReleaseResponse.dart';
 
-import '../model/Movies.dart';
+import '../model/MoviesDetails.dart';
 import '../model/PopularMoviesResponse.dart';
 import '../model/TopRatedResponse.dart';
 
@@ -110,23 +110,26 @@ class ApiManager {
       throw e;
     }
   }
-  static Future<Movies?> getsources(String movieId) async {
-    Uri url = Uri.https(ApiCostants.BaseUrl,ApiCostants.MovApi+movieId, {
-      'Authorization':
-      'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NWRlNDBmMDE1MjMwMzQzMWE4NzJkZjc2MjExOTk2NyIsInN1YiI6IjY1NDAxOTE5NTA3MzNjMDBjNTM2NGU0YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.63VZ2aTvKv2v185XtKAuYhrvGCWx-OQAErv07EL_Dc0'
-    });
+
+  static Future<Movies?> getDetails(String movieId) async {
+    Uri url = Uri.https(
+      ApiCostants.BaseUrl,
+      ApiCostants.DetMovApi + movieId,
+    );
     try {
       var response = await http.get(url, headers: {
         'Authorization':
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NWRlNDBmMDE1MjMwMzQzMWE4NzJkZjc2MjExOTk2NyIsInN1YiI6IjY1NDAxOTE5NTA3MzNjMDBjNTM2NGU0YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.63VZ2aTvKv2v185XtKAuYhrvGCWx-OQAErv07EL_Dc0'
+            'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NWRlNDBmMDE1MjMwMzQzMWE4NzJkZjc2MjExOTk2NyIsInN1YiI6IjY1NDAxOTE5NTA3MzNjMDBjNTM2NGU0YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.63VZ2aTvKv2v185XtKAuYhrvGCWx-OQAErv07EL_Dc0',
+        'movId': '$movieId'
       });
       var bodyString = response.body;
       var json = jsonDecode(bodyString);
       print('jsonconverted');
       return Movies.fromJson(json);
     } catch (e) {
-      print('sth wrong');
+      print(e.toString());
       throw e;
     }
   }
 }
+
