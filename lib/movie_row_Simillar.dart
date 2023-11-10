@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies/model/PopularMoviesResponse.dart';
-import 'package:movies/new_release/mov_item.dart';
-
-import '../model/NewReleaseResponse.dart';
-import '../myTheme.dart';
+import 'package:movies/recommended/movie_itemito.dart';
 
 class Movie_Row_Simillar extends StatelessWidget {
   List<Result> results2;
@@ -20,7 +17,7 @@ class Movie_Row_Simillar extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Simillar',
+          Text('More Like This',
               style: TextStyle(color: Colors.white, fontSize: 18)),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.22,
@@ -35,7 +32,7 @@ class Movie_Row_Simillar extends StatelessWidget {
               },
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return MovItem(results: results2[index]);
+                return MovieItemito(results: results2[index]);
               },
               itemCount: results2.length,
             ),

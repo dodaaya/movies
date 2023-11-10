@@ -1,12 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movies/Models/SimillarResponse.dart';
-import 'package:movies/Popularmovie/movie_container.dart';
 import 'package:movies/api/api_manager.dart';
 import 'package:movies/model/MoviesDetails.dart';
 import 'package:movies/movie_row_Simillar.dart';
 import 'package:movies/myTheme.dart';
-import 'package:movies/new_release/movie_row.dart';
 
 class Ui extends StatelessWidget {
   Movies result;
@@ -31,7 +29,7 @@ class Ui extends StatelessWidget {
           ),
           body: SingleChildScrollView(
             child: Container(
-              padding: EdgeInsets.all(15),
+              padding: EdgeInsets.all(8),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -72,7 +70,7 @@ class Ui extends StatelessWidget {
                         .copyWith(color: MyTheme.lighterGreyColor),
                   ),
                   SizedBox(
-                    height: 7,
+                    height: 5,
                   ),
                   Row(
                     children: [

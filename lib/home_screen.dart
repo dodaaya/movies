@@ -22,7 +22,8 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         backgroundColor: MyTheme.black,
         bottomNavigationBar: BottomNavigationBar(
-          unselectedItemColor: MyTheme.lighterGreyColor,
+
+        unselectedItemColor: MyTheme.lighterGreyColor,
           fixedColor: MyTheme.selectedYellowColor,
           backgroundColor: MyTheme.greyColor,
           showUnselectedLabels: true,
