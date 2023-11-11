@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MyTheme {
+  static Color botNavColor = Color(0xff282A28);
   static Color black = Color(0xff121312);
   static Color white = Color(0xffffffff);
   static Color greyColor = Color(0xff282A28);
@@ -13,11 +14,9 @@ class MyTheme {
 
   static ThemeData lightTheme = ThemeData(
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        backgroundColor: greyColor,
-        selectedItemColor: selectedYellowColor,
-        selectedIconTheme: IconThemeData(color: selectedYellowColor),
-        showSelectedLabels: true,
-        showUnselectedLabels: true),
+      selectedItemColor: selectedYellowColor,
+      unselectedItemColor: white,
+    ),
 
     // appBarTheme: AppBarTheme(
     //     backgroundColor: black,
@@ -29,11 +28,11 @@ class MyTheme {
 
     textTheme: TextTheme(
       titleLarge:
-          TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: white),
+      TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: white),
       titleMedium:
-          TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: black),
+      TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: black),
       titleSmall:
-          TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: black),
+      TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: black),
     ),
   );
 }

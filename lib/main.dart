@@ -2,6 +2,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:movies/home_screen.dart';
+import 'package:movies/myTheme.dart';
 import 'package:movies/tabs/MoviesTap.dart';
 
 void main() async {
@@ -18,9 +19,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      routes: {HomeScreen.routeName:(context)=>HomeScreen(),
-      MoviesTap.routeName:(context)=>MoviesTap()},
+      routes: {
+        HomeScreen.routeName: (context) => HomeScreen(),
+        MoviesTap.routeName: (context) => MoviesTap()
+      },
       initialRoute: HomeScreen.routeName,
+      theme: MyTheme.lightTheme,
     );
   }
 }
