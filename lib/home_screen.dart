@@ -3,6 +3,8 @@ import 'package:movies/myTheme.dart';
 import 'package:movies/tabs/CategoriesTap.dart';
 import 'package:movies/tabs/home_tab.dart';
 import 'package:movies/tabs/search_tab.dart';
+
+
 import 'package:movies/tabs/watchlist_tab.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -53,7 +55,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<Widget> tabs = [
     HomeTab(),
-    SearchTab(),
+   Search_Tab(),
+
     CategoriesTap(),
     WatchListTab(),
   ];

@@ -6,4 +6,5 @@ class ApiCostants {
   static const String BaseUrl = 'api.themoviedb.org';
   static const String DetMovApi = '/3/movie/';
   static const String SimMovApi = '/3/movie/similar';
+  static const String moviesApi = "/3/search/movie";
 }

@@ -6,6 +6,7 @@ import 'package:movies/Models/MoviesResponse.dart';
 import 'package:movies/Models/SimillarResponse.dart';
 import 'package:movies/api/api_consts.dart';
 import 'package:movies/model/NewReleaseResponse.dart';
+import 'package:movies/model/SearchResponse.dart';
 
 import '../model/MoviesDetails.dart';
 import '../model/PopularMoviesResponse.dart';
@@ -148,6 +149,23 @@ class ApiManager {
       var json = jsonDecode(bodyString);
       print('jsonconverted');
       return SimillarResponse.fromJson(json);
+    } catch (e) {
+      print(e.toString());
+      throw e;
+    }
+  }
+  static Future<SearchResponse?> searchMovies(String query) async {
+    try {
+      Uri url = Uri.https(
+          ApiCostants.baseUrl, ApiCostants.moviesApi, {'query': query});
+      var response = await http.get(url, headers: {
+        "Authorization":
+        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NGMwYzNjYmUxMjFlNmU1NmZkMTNlZWM1NTUzNzlhZCIsInN1YiI6IjY1Mzk5MzZlOTU1YzY1MDBjNDU1MWFhNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.KHa1gpTS1rvl4_n7Su_kjfacBQ2c_DLXsALp7rLrtZo",
+      });
+      var bodyString = response.body;
+      var json = jsonDecode(bodyString);
+      print('success');
+      return SearchResponse.fromJson(json);
     } catch (e) {
       print(e.toString());
       throw e;
