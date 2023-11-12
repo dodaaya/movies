@@ -25,7 +25,9 @@ class SearchMovieDelegate extends SearchDelegate {
   @override
   Widget buildResults(BuildContext context) {
     if (query.isEmpty) {
-      return Center(child: Text('Suggestions'));
+      return Container(
+          color: MyTheme.black,
+          child: Center(child: Image.asset('assets/images/movie.png')));
     }
     return MovieCont(movieName: query); //FutureBuilder<MovieResponse?>(
     //     future: ApiManager.searchMovies(query),
@@ -57,10 +59,7 @@ class SearchMovieDelegate extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    if (query.isEmpty) {
-      return Center(child: Text('Suggestions'));
-    }
-    return buildResults(context);
+   return buildResults(context);
     // return FutureBuilder<MovieResponse?>(
     //     future: ApiManager.searchMovies(query),
     //     builder: (context, snapshot) {
@@ -91,6 +90,10 @@ class SearchMovieDelegate extends SearchDelegate {
 
   @override
   ThemeData appBarTheme(BuildContext context) {
-    return MyTheme.lightTheme;
+    return ThemeData(
+      appBarTheme: AppBarTheme(
+        color: MyTheme.greyColor
+      )
+    );
   }
 }

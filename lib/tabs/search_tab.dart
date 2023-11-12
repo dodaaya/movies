@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../myTheme.dart';
 import '../search/search_movie_delegate.dart';
 
-class SearchTab extends StatelessWidget {
+class Search_Tab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

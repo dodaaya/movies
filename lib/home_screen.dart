@@ -3,6 +3,8 @@ import 'package:movies/myTheme.dart';
 import 'package:movies/tabs/CategoriesTap.dart';
 import 'package:movies/tabs/home_tab.dart';
 import 'package:movies/tabs/search_tab.dart';
+
+
 import 'package:movies/tabs/watchlist_tab.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -22,25 +24,27 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         backgroundColor: MyTheme.black,
         bottomNavigationBar: Theme(
-          data: Theme.of(context).copyWith(
-            canvasColor: MyTheme.greyColor,
+          data: MyTheme.lightTheme.copyWith(
+            canvasColor: MyTheme.bottomBarColor
           ),
           child: BottomNavigationBar(
+
+          unselectedItemColor: MyTheme.lighterGreyColor,
+            fixedColor: MyTheme.selectedYellowColor,
+            backgroundColor: MyTheme.greyColor,
+            showUnselectedLabels: true,
             currentIndex: selectedIndex,
             onTap: (index) {
               selectedIndex = index;
               setState(() {});
             },
-            selectedItemColor: MyTheme.selectedYellowColor,
             items: [
               BottomNavigationBarItem(icon: Icon(Icons.home), label: 'HOME'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.search), label: 'SEARCH'),
+              BottomNavigationBarItem(icon: Icon(Icons.search), label: 'SEARCH'),
               BottomNavigationBarItem(
                   icon: Icon(Icons.movie_creation), label: 'BROWSE'),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.collections_bookmark_sharp),
-                  label: 'WATCHLIST')
+                  icon: Icon(Icons.collections_bookmark_sharp), label: 'WATCHLIST')
             ],
           ),
         ),
@@ -51,7 +55,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<Widget> tabs = [
     HomeTab(),
-    SearchTab(),
+   Search_Tab(),
+
     CategoriesTap(),
     WatchListTab(),
   ];
