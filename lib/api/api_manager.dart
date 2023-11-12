@@ -2,9 +2,10 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:movies/Models/GenreResponse.dart';
-import 'package:movies/Models/MoviesResponse.dart';
+
 import 'package:movies/Models/SimillarResponse.dart';
 import 'package:movies/api/api_consts.dart';
+import 'package:movies/model/MoviesResponse.dart';
 import 'package:movies/model/NewReleaseResponse.dart';
 import 'package:movies/model/SearchResponse.dart';
 
